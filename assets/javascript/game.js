@@ -25,7 +25,7 @@ $(document).ready(function() {
   function placeDashes(word) {
     var dashes = [];
     for (var i = 0; i < word.length; i++) {
-      dashes.push("_")
+      dashes.push("_");
     }
     return dashes;
   }
@@ -34,25 +34,22 @@ $(document).ready(function() {
 
   function matchLetter(letter) {
     for (var i = 0; i < theWord.length; i++) {
-      
-      var char = theWord[i];
-      if ((char.toLowerCase() === letter.toLowerCase())) {
-        guessedLetters.push(letter);
+      if ((theWord[i].toLowerCase() === letter.toLowerCase())) {
         placeHolders[i] = letter;
-      } if ((!guessedLetters.includes(letter))) {
-        guessedLetters.push(letter);
-        guessesLeft--;
+        document.getElementById("dashes").innerHTML = placeHolders.join(" ");
+        if (!guessedLetters.includes(letter)) {
+          guessedLetters.push(letter);
+        }
       }
-      // if ((theWord[i].toLowerCase() === letter)) {
-      //   console.log(theWord[i]);
-      //   placeHolders[i] = letter;
-      //   guessedLetters.push(letter);
-      //   console.log("why isn't this hitting")
-      // } 
-      // else if (!guessedLetters.includes(letter)) {
-      //   guessedLetters.push(letter);
-      //   guessesLeft--;
-      // }
+
+     
+    }
+    if (
+      (theWord.includes(letter) === false) &&
+      (guessedLetters.includes(letter) === false)
+      ) {
+      guessesLeft--;
+      guessedLetters.push(letter);
     }
   }
 
@@ -73,7 +70,7 @@ $(document).ready(function() {
       losses++;
     }
 
-    if (theWord === placeHolders.join(" ")) {
+    if (theWord.toLowerCase() === placeHolders.join("")) {
       alert("you got this one");
       newGame();
       wins++;
@@ -84,18 +81,9 @@ $(document).ready(function() {
     document.getElementById("dashes").innerHTML = placeHolders.join(" ");
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;
-    document.getElementById("remaining-guesses").innerHTML = guessesLeft; 
+    document.getElementById("remaining-guesses").innerHTML = guessesLeft;
+    document.getElementById("already-guessed").innerHTML = guessedLetters.join(" "); 
 
   }
   
 });
-
-function palindrome?(word) {
-  var reversed = '';
-  for (var i = word.length - 1; i >= 0; i++) {
-    reversed += word[i];
-
-  }
-
-  return reversed === word;
-}
