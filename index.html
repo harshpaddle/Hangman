@@ -6,24 +6,56 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 <title>Hang that man</title>
 </head>
 <body>
 
-  <div class="jumbotron jumbotron-fluid container text-center row-col-12 p-1">
+  <div class="jumbotron mt-4 jumbotron-fluid container text-center row-col-12 p-1">
+    <img class="float-left ml-4" src="http://www.playhangman.com/images/animhangman.gif" alt="hangman.gif">
     <h1 class="display-3">Hang that man </h1>
     <h3><span class="text-muted">woah woah.. chirp chirp</span></h3>
   </div>
 
-  <div class="row container">
-    <div class="col-xs-12 col-sm-8">
+  <div class="row container justify-content-around">
+    <div class="container col-xs-12 col-sm-8 rounded border border-success">
+      <h5 class="display-7 p-4 col-12">Anyways click on the new game button and start guessing the names of major american sports teams: <button onclick="start_scroll_down()" type="button" class="new-game btn btn-outline-primary">new game</button></h5>
 
-    </div>
+      <div class="card-body display-3">
+        <h5 class="card-title">Guess the team name:</h5>
+        <p class="card-text text-center" id="dashes"></p>
+      </div>
+
+      <ul class="list-group m-2 display-4">
+        <li class="list-group-item d-flex justify-content-between align-items-center bg-success">
+          Wins:
+          <span id="wins" class="bg-info badge badge-primary badge-pill">0</span>
+        </li>
+        <li class="bg-light list-group-item d-flex justify-content-between align-items-center">
+          Losses:
+          <span id="losses" class="badge badge-primary badge-pill">0</span>
+        </li>
+        <li class="bg-dark text-white list-group-item d-flex justify-content-between align-items-center">
+          Remaining Guesses:
+          <span id="remaining-guesses" class="badge badge-primary badge-pill">10</span>
+        </li>
+        <li class="bg-danger text-white list-group-item d-flex justify-content-between align-items-center">
+          Already Gussed Letters:
+          <span id="already-guessed" class="badge badge-primary badge-pill">mad</span>
+        </li>
+      </ul>
   </div>
+
+<script>
+  function start_scroll_down() {
+    scroll = setInterval(function () { window.scrollBy(0, 10); console.log('start'); }, 30);
+  }
+</script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="assets/javascript/game.js"></script>
 </body>
 </html>
